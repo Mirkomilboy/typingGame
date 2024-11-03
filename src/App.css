@@ -1,38 +1,171 @@
-.App {
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.App{
+  background: radial-gradient(#3D3D42, #191A1F);
+  height: 100vh;
+  color: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.home .title{
+  font-size: 80px;
+  text-shadow: 0 10px 10px #000;
+  letter-spacing: 5px;
+}
+.home .author {
+  text-align: right;
+}
+.home .author a {
+  text-decoration: none;
+  font-style: italic;
+  color: inherit;
+}
+.home .author a:hover {
+  text-decoration: underline;
+}
+.endGame button,
+.home .btnPlay{
+  display: block;
+  margin: 20px auto;
+  background-color: #191A21;
+  color: #eee;
+  padding: 5px 10px;
+  font-size: large;
+  letter-spacing: 5px;
+  box-shadow: 0 10px 10px #0005;
+  cursor: pointer;
+}
+
+.btnHome{
+  display: table;
+  margin: 20px auto;
+  background-color: #191A21;
+  color: #eee;
+  padding: 5px 10px;
+  font-size: large;
+  letter-spacing: 5px;
+  box-shadow: 0 10px 10px #0005;
+  text-decoration: none;
+}
+
+.home .note {
   text-align: center;
+  font-size: 13px;
+  font-weight: 300;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.home{
+  opacity: 0;
+  animation: showHome 1s .1s ease-in-out 1 forwards;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@keyframes showHome{
+  to{
+    opacity: 1;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* playing */
+.playing{
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 50px;
+  text-align: center;
+  gap: 30px;
+  opacity: 0;
+  animation: showHome 1s ease-in-out 1 forwards;
+}
+.playing .time-left {
+  text-align: right;
+}
+.playing .list{
+  padding: 50px;
+  list-style: none;
+  text-align: left;
+  background-image: linear-gradient(
+    45deg, #5556A0, #AB84B4
+  );
+  border-radius: 20px;
+  box-shadow: 0px 2px 0px #fff;
+}
+.playing .list li{
+  display: inline-block;
+  font-size: x-large;
+  padding: 10px;
+  text-shadow: 0 2px 2px #0009;
 }
 
-.App-link {
-  color: #61dafb;
+.playing .inputForm input{
+  width: 100%;
+  padding: 20px 0;
+  outline: none;
+  text-align: center;
+  font-size: x-large;
+  letter-spacing: 5px;
+  background-color: #0005;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+}
+.playing .list li.true{
+  color: greenyellow;
+  position: relative;
+}
+.playing .list li.false{
+  position: relative;
+  color: red;
+}
+.playing .list li.false::after,
+.playing .list li.true::after{
+  position: absolute;
+  inset: 0 0 0 0;
+  content: '+1';
+  text-align: center;
+  animation: showPoint 0.5s linear 1 forwards;
+}
+.playing .list li.false::after{
+  content: '-1';
+}
+@keyframes showPoint{
+  0%{
+    opacity: 0;
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    transform: translateY(-50px);
+    opacity: 0;
+  }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.playing .exit-game {
+  display: block;
+  margin-left: auto;
+  background-color: #191A21;
+  color: #eee;
+  padding: 5px 10px;
+  font-size: large;
+  letter-spacing: 5px;
+  box-shadow: 0 10px 10px #0005;
+  text-decoration: none;
+}
+
+.endGame{
+  opacity: 0;
+  animation: showHome 1s .3s ease-in-out 1 forwards;
+}
+.endGame .result{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px;
+  text-align: center;
+  font-size: 20px;
+  text-shadow: 0 10px 10px #000;
+}
+.endGame .result .number{
+  font-size: 50px;
 }
